@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi Andy ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&family=Poppins:wght@300;500;700&display=swap');
+
+        body {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        /* Sobre - más grande */
+        .envelope {
+            width: 250px; /* Aumento de tamaño */
+            height: 170px; /* Aumento de tamaño */
+            background: #ff4e50;
+            position: relative;
+            margin: auto;
+            cursor: pointer;
+            transform: scale(1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .envelope:hover {
+            transform: scale(1.1);
+        }
+
+        .flap {
+            width: 0;
+            height: 0;
+            border-left: 125px solid transparent;
+            border-right: 125px solid transparent;
+            border-bottom: 85px solid #d63031;
+            position: absolute;
+            top: -85px;
+            left: 0;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .letter {
+            width: 220px; /* Aumento de tamaño */
+            height: 140px; /* Aumento de tamaño */
+            background: white;
+            position: absolute;
+            top: -60px;
+            left: 15px;
+            text-align: center;
+            line-height: 140px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 25px;
+            color: #ff4e50;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /* Mostrar pregunta */
+        .show .flap {
+            transform: rotateX(180deg);
+        }
+
+        .show .letter {
+            opacity: 1;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 50px;
+            margin-bottom: 10px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        p {
+            font-size: 20px;
+            margin-bottom: 20px;
+            animation: fadeIn 2.5s ease-in-out;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        .btn {
+            font-size: 20px;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .yes {
+            background-color: #ff4e50;
+            color: white;
+            font-weight: bold;
+        }
+
+        .yes:hover {
+            background-color: #ff6b6b;
+        }
+
+        .no {
+            background-color: #ffcc5c;
+            color: white;
+            font-weight: bold;
+        }
+
+        .no:hover {
+            background-color: #f9a825;
+        }
+
+        .hidden {
+            display: none;
+            font-size: 30px;
+            font-family: 'Dancing Script', cursive;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Pétalos de rosa */
+        .petal {
+            position: absolute;
+            top: -10px;
+            background: rgba(255, 0, 0, 0.8);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) translateX(0); }
+            100% { transform: translateY(100vh) translateX(20px); }
+        }
+
+        /* Mueve el botón "No" aleatoriamente */
+        .move {
+            position: absolute;
+            transition: top 0.3s, left 0.3s;
+        }
+
+        /* Estilos Responsivos para móviles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 35px;
+            }
+
+            .btn {
+                font-size: 18px;
+                padding: 12px 25px;
+            }
+
+            .envelope {
+                width: 200px;
+                height: 140px;
+            }
+
+            .flap {
+                border-left: 100px solid transparent;
+                border-right: 100px solid transparent;
+                border-bottom: 70px solid #d63031;
+            }
+
+            .letter {
+                width: 180px;
+                height: 120px;
+                font-size: 22px;
+            }
+
+            .container {
+                margin-top: 30px;
+            }
+
+            .buttons {
+                margin-top: 20px;
+            }
+
+            .move {
+                font-size: 16px;
+            }
+        }
+
+        /* Estilos para móviles pequeños */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .btn {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+
+            .envelope {
+                width: 180px;
+                height: 130px;
+            }
+
+            .flap {
+                border-left: 90px solid transparent;
+                border-right: 90px solid transparent;
+                border-bottom: 60px solid #d63031;
+            }
+
+            .letter {
+                width: 160px;
+                height: 100px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="envelope" onclick="openEnvelope()">
+            <div class="flap"></div>
+            <div class="letter">Ábreme 💌</div>
+        </div>
+
+        <div id="question" style="display: none;">
+            <h1>Mi amor, ¿quieres ser mi San Valentín? ❤️</h1>
+            <p>Eres mi felicidad, mi persona favorita en el mundo. No hay nadie con quien quisiera compartir este día más que contigo. 💖</p>
+            
+            <div class="buttons">
+                <button class="btn yes" onclick="showMessage()">¡Sí, quiero! 💕</button>
+                <button class="btn no move" id="noButton" onmouseover="moveButton()">No 😢</button>
+            </div>
+        </div>
+
+        <div class="hidden" id="message">
+            🥰 ¡Sabía que dirías que sí, mi niña!  
+            💕 Eres mi felicidad, y mi mundo entero.  
+            💖 Gracias por existir y por hacer mi vida más hermosa cada día.  
+             ¡TE AMO CON TODO MI CORAZÓN!   
+        </div>
+    </div>
+
+    <script>
+        function openEnvelope() {
+            document.querySelector('.envelope').classList.add('show');
+            setTimeout(() => {
+                document.getElementById('question').style.display = 'block';
+                document.querySelector('.envelope').style.display = 'none';
+            }, 1000);
+        }
+
+        function showMessage() {
+            document.getElementById('message').style.display = 'block';
+        }
+
+        function moveButton() {
+            let btn = document.getElementById('noButton');
+            let x = Math.random() * (window.innerWidth - 150);
+            let y = Math.random() * (window.innerHeight - 100);
+            btn.style.left = x + "px";
+            btn.style.top = y + "px";
+        }
+
+        function createPetal() {
+            let petal = document.createElement("div");
+            petal.classList.add("petal");
+            petal.style.left = Math.random() * window.innerWidth + "px";
+            petal.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(petal);
+
+            setTimeout(() => { petal.remove(); }, 5000);
+        }
+
+        setInterval(createPetal, 300);
+    </script>
+
+</body>
+</html>
